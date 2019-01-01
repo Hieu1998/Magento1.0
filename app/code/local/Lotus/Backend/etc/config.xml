@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Lotus_Backend>
+            <version>0.1.0</version>
+        </Lotus_Backend>
+    </modules>
+    <global>
+        <!-- khai bao models -->
+        <models>
+            <backend>
+                <class>Lotus_Backend_Model</class>
+
+                <resourceModel>backend_resource</resourceModel>
+            </backend>
+
+            <backend_resource>
+                <class>Lotus_Backend_Model_Mysql4</class>
+                <entities>
+                    <backend>
+                        <table>shop_tiki</table>
+                    </backend>
+                </entities>
+            </backend_resource>
+        </models>
+
+        <resources>
+            <backend_setup>
+                <setup>
+                    <module>Lotus_Backend</module>
+                </setup>
+                <connection>
+                    <!-- do not create new connection, use predefined core setup connection -->
+                    <use>core_setup</use>
+                </connection>
+            </backend_setup>
+
+            <backend_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </backend_write>
+            <backend_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </backend_read>
+        </resources>
+
+        <!-- khai bao file helper -->
+        <helpers>
+            <backend> <!-- helper name -->
+                <class>Lotus_Backend_Helper</class> <!-- declaration of helper class -->
+            </backend>
+        </helpers>
+
+        <!--khai bao block -->
+        <blocks>
+            <backend>
+                <class>Lotus_Backend_Block</class>
+            </backend>
+        </blocks>
+        <!-- khai bao event add to cart -->
+        <events>
+            <checkout_cart_product_add_after>
+                <observers>
+                    <Lotus_Backend_Model_Observer>
+                        <type>singleton</type>
+                        <class>Lotus_Backend_Model_Observer</class>
+                        <method>cartProductAddAfter</method>
+                    </Lotus_Backend_Model_Observer>
+                </observers>
+            </checkout_cart_product_add_after>
+        </events>
+    </global>
+    <!-- khai bao layout admin-->
+    <adminhtml>
+        <layout>
+            <updates>
+                <backend>
+                    <file>backend_index.xml</file>
+                </backend>
+            </updates>
+        </layout>
+    </adminhtml>
+    <!-- khai bao layout frontend-->
+    <frontend>
+        <layout>
+            <updates>
+                <backend>
+                    <file>backend.xml</file>
+                </backend>
+            </updates>
+        </layout>
+        <routers>
+            <backend>
+                <use>standard</use>
+                <args>
+                    <module>Lotus_Backend</module>
+                    <frontName>shop_tiki</frontName>
+                </args>
+            </backend>
+        </routers>
+    </frontend>
+    <!-- khai bao route -->
+    <admin>
+        <routers>
+            <backend>
+                <use>admin</use>
+                <args>
+                    <module>Lotus_Backend</module>
+                    <frontName>shop_tiki</frontName>
+                </args>
+            </backend>
+        </routers>
+    </admin>
+</config>

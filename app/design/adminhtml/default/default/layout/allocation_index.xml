@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <lotus_allocation_adminhtml_allocation_index>
+        <reference name="content">
+            <block type="allocation/adminhtml_allocation" name="grid_container" />
+        </reference>
+    </lotus_allocation_adminhtml_allocation_index>
+</layout>

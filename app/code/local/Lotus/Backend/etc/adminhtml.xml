@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <backend translate="title" module="backend">
+            <title>Shop_tiki</title>
+            <sort_order>30</sort_order>
+            <children>
+                <backend translate="title" module="backend">
+                    <title>New Action</title>
+                    <action>shop_tiki/adminhtml_backend</action>
+                    <sort_order>0</sort_order>
+                </backend>
+                <settings module="backend" translate="title">
+                    <title>Settings</title>
+                    <sort_order>1000</sort_order>
+                    <action>adminhtml/system_config/edit/section/backend</action>
+                </settings>
+            </children>
+            <!-- ... -->
+        </backend>
+    </menu>
+    <!--setting permissions-->
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <backend module="backend" translate="title">
+                                        <title>Backend</title>
+                                        <sort_order>71</sort_order>
+                                    </backend>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <backend module="backend" translate="title">
+                        <title>Backend</title>
+                        <sort_order>71</sort_order>
+                        <children>
+                            <lesson06 module="backend" translate="title">
+                                <title>Manage Items</title>
+                                <sort_order>0</sort_order>
+                            </lesson06>
+                            <settings module="backend" translate="title">
+                                <title>Settings</title>
+                                <sort_order>1000</sort_order>
+                            </settings>
+                        </children>
+                    </backend>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

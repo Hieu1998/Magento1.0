@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <backend_index_index>   <!-- mymodule/namecontroller/action -->
+        <reference name="content">
+            <block type="backend/backend" name="backend" template="backend/backend.phtml" />
+        </reference>
+        <reference name='head'>
+            <action method="addCss"><stylesheet>css/style.css</stylesheet></action>
+            <action method="addJs"><script>backend/js.js</script></action>
+        </reference>
+    </backend_index_index>
+</layout>
